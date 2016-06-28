@@ -28,6 +28,8 @@ namespace AlexaBuildCodeSkill
             // Add framework services.
             services.AddMvc();
             services.AddLogging();
+
+            // Add speechlet library services
             services.AddScoped<ICodeSpeechlet, CodeSpeechlet>();
         }
 
