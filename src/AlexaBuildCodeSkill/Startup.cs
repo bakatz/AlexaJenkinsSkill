@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AlexaBuildCodeSkill.Lib.Services;
+using AlexaBuildCodeSkill.Lib.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -29,6 +27,8 @@ namespace AlexaBuildCodeSkill
         {
             // Add framework services.
             services.AddMvc();
+            services.AddLogging();
+            services.AddScoped<ICodeSpeechlet, CodeSpeechlet>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,7 +36,6 @@ namespace AlexaBuildCodeSkill
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
             app.UseMvc();
         }
     }
