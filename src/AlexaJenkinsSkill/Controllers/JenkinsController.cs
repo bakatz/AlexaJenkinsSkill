@@ -23,7 +23,7 @@ namespace AlexaJenkinsSkill.Controllers
         [HttpGet]
         [Route("api/jenkins/ping")]
         public string Ping() {
-            return "Pong";
+            return "Pong!";
         }
     }
 }
