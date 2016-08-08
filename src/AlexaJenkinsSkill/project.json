@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "AlexaBuildCodeSkill.Lib": "1.0.0-*",
+    "AlexaJenkinsSkill.Lib": "1.0.0-*",
     "Microsoft.AspNetCore.Mvc": "1.0.0",
     "Microsoft.AspNetCore.Mvc.WebApiCompatShim": "1.0.0",
     "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",

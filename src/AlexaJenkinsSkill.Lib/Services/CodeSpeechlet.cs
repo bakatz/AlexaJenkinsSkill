@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using AlexaBuildCodeSkill.Lib.Services.Interfaces;
+using AlexaJenkinsSkill.Lib.Services.Interfaces;
 using AlexaSkillsKit.Speechlet;
 using Microsoft.Extensions.Logging;
 
-namespace AlexaBuildCodeSkill.Lib.Services
+namespace AlexaJenkinsSkill.Lib.Services
 {
     public class CodeSpeechlet : SpeechletAsync, ICodeSpeechlet
     {

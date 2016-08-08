@@ -1,12 +1,12 @@
-﻿using AlexaBuildCodeSkill.Lib.Services;
-using AlexaBuildCodeSkill.Lib.Services.Interfaces;
+﻿using AlexaJenkinsSkill.Lib.Services;
+using AlexaJenkinsSkill.Lib.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace AlexaBuildCodeSkill
+namespace AlexaJenkinsSkill
 {
     public class Startup
     {

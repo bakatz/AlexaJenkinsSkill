@@ -10,9 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AlexaBuildCodeSkill", "src\AlexaBuildCodeSkill\AlexaBuildCodeSkill.xproj", "{EEC889EE-DBF7-4265-87BE-D8B44B50F005}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AlexaJenkinsSkill", "src\AlexaJenkinsSkill\AlexaJenkinsSkill.xproj", "{EEC889EE-DBF7-4265-87BE-D8B44B50F005}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AlexaBuildCodeSkill.Lib", "src\AlexaBuildCodeSkill.Lib\AlexaBuildCodeSkill.Lib.xproj", "{3FE26B91-326B-4DA7-B84D-489ECE554116}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AlexaJenkinsSkill.Lib", "src\AlexaJenkinsSkill.Lib\AlexaJenkinsSkill.Lib.xproj", "{3FE26B91-326B-4DA7-B84D-489ECE554116}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
