@@ -1,5 +1,10 @@
-﻿using AlexaJenkinsSkill.Lib.Services;
-using AlexaJenkinsSkill.Lib.Services.Interfaces;
+﻿using AlexaJenkinsSkill.Lib.Clients;
+using AlexaJenkinsSkill.Lib.Clients.Interfaces;
+using AlexaJenkinsSkill.Lib.Handlers.Factories;
+using AlexaJenkinsSkill.Lib.Handlers.Factories.Interfaces;
+using AlexaJenkinsSkill.Lib.Options;
+using AlexaJenkinsSkill.Lib.Speechlets;
+using AlexaJenkinsSkill.Lib.Speechlets.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -17,6 +22,7 @@ namespace AlexaJenkinsSkill
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
+
             Configuration = builder.Build();
         }
 
@@ -26,10 +32,22 @@ namespace AlexaJenkinsSkill
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc();
+            services.AddMvc()
+                    .AddWebApiConventions(); // TODO: these are 'shim' conventions for backward compatibility with WebAPI 2. should remove this when skills kit is updated for .net core.
+            services.AddOptions();
             services.AddLogging();
+
             // Add speechlet library services
-            services.AddScoped<ICodeSpeechlet, CodeSpeechlet>();
+            services.Configure<JenkinsOptions>(options => {
+                options.JenkinsAuthenticationToken = Configuration["JenkinsAuthenticationToken"];
+                options.JenkinsBaseUri = Configuration["JenkinsBaseUri"];
+                options.JenkinsApiKey = Configuration["JenkinsApiKey"];
+                options.JenkinsUserName = Configuration["JenkinsUserName"];
+            });
+
+            services.AddScoped<IJenkinsSpeechlet, JenkinsSpeechlet>();
+            services.AddScoped<IIntentHandlerFactory, IntentHandlerFactory>();
+            services.AddScoped<IJenkinsClient, JenkinsClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
