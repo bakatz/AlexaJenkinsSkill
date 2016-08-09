@@ -23,15 +23,21 @@ namespace AlexaJenkinsSkill.Lib.Clients
         }
 
         public async Task BuildWithParametersAsync(BuildWithParametersRequest request) {
+            if (request == null) {
+                throw new ArgumentNullException(nameof(request));
+            }
+
             var client = new RestClient(_jenkinsOptions.Value.JenkinsBaseUri) {
                 Authenticator = new HttpBasicAuthenticator(_jenkinsOptions.Value.JenkinsUserName, _jenkinsOptions.Value.JenkinsApiKey)
             };
-            var restRequest = new RestRequest($"/job/{request.Name}/buildWithParameters");
+
+            var restRequest = new RestRequest($"/job/{request.Name.ToLower()}/buildWithParameters", Method.POST);
             restRequest.AddQueryParameter("token", _jenkinsOptions.Value.JenkinsAuthenticationToken);
             restRequest.AddQueryParameter("PublishRoles", "All");
-            var response = await client.PostTaskAsync<RestResponse>(restRequest);
-            if (response.StatusCode != HttpStatusCode.OK) {
-                throw new InvalidOperationException($"Jenkins returned an unexpected status code of {response.StatusCode} instead of the expected {HttpStatusCode.OK}");
+
+            var response = await client.ExecutePostTaskAsync(restRequest);
+            if (response?.StatusCode != HttpStatusCode.Created) {
+                throw new InvalidOperationException("Jenkins returned an unexpected response.");
             }
         }
     }
