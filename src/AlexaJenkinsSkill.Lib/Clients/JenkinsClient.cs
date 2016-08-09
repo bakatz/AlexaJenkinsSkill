@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using AlexaJenkinsSkill.Lib.Clients.Interfaces;
 using AlexaJenkinsSkill.Lib.Entities;
 using AlexaJenkinsSkill.Lib.Options;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
 using RestSharp;
@@ -15,11 +14,9 @@ namespace AlexaJenkinsSkill.Lib.Clients
     public class JenkinsClient : IJenkinsClient
     {
         private readonly IOptions<JenkinsOptions> _jenkinsOptions;
-        private readonly ILogger<JenkinsClient> _logger;
 
-        public JenkinsClient(IOptions<JenkinsOptions> jenkinsOptions, ILogger<JenkinsClient> logger) {
+        public JenkinsClient(IOptions<JenkinsOptions> jenkinsOptions) {
             _jenkinsOptions = jenkinsOptions;
-            _logger = logger;
         }
 
         public async Task BuildWithParametersAsync(BuildWithParametersRequest request) {
