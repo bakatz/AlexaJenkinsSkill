@@ -5,7 +5,6 @@ using AlexaJenkinsSkill.Lib.Clients.Interfaces;
 using AlexaJenkinsSkill.Lib.Entities;
 using AlexaJenkinsSkill.Lib.Options;
 using Microsoft.Extensions.Options;
-using Newtonsoft.Json.Linq;
 using RestSharp;
 using RestSharp.Authenticators;
 
